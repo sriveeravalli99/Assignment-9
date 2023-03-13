@@ -1,0 +1,65 @@
+---
+title: "Assignment 9"
+output: html_document
+date: "2023-03-13"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+For this exercise, I have chosen the "iris" dataset from Vincent Arel Bundock's list of datasets. This dataset contains measurements of the length and width of sepals and petals of three different species of iris flowers. The goal of this exercise is to create three different types of visualizations using R.
+
+Loading the dataset First, let's load the "iris" dataset into R:
+
+```{r}
+data(iris)
+```
+
+This command loads the "iris" dataset into memory.
+
+Basic Visualization Let's start with a basic visualization of the "iris" dataset without using any external package. We can plot a scatter plot between the "Sepal.Length" and "Sepal.Width" variables using the "plot" function:
+
+```{r}
+plot(iris$Sepal.Length, iris$Sepal.Width,
+     xlab = "Sepal Length",
+     ylab = "Sepal Width",
+     main = "Scatter Plot of Sepal Length vs. Sepal Width")
+```
+
+This generates a scatter plot between the "Sepal.Length" and "Sepal.Width" variables. The "xlab" and "ylab" arguments specify the labels for the x-axis and y-axis, respectively. The "main" argument specifies the title of the plot.
+
+Basic Visualization
+
+This plot shows the relationship between sepal length and sepal width of the iris flowers.
+
+Lattice Visualization Next, let's create a lattice plot using the "lattice" package. We can use the "xyplot" function to create a scatter plot between "Sepal.Length" and "Sepal.Width" variables, with the data points colored by species:
+
+```{r}
+library(lattice)
+xyplot(Sepal.Width ~ Sepal.Length, data = iris,
+       groups = Species,
+       type = c("p", "g"),
+       auto.key = list(columns = 3),
+       xlab = "Sepal Length",
+       ylab = "Sepal Width",
+       main = "Scatter Plot of Sepal Length vs. Sepal Width by Species")
+```
+
+This generates a scatter plot between the "Sepal.Length" and "Sepal.Width" variables, with the data points colored by species. The "groups" argument specifies that we want to group the data points by species. The "type" argument specifies that we want to plot both points ("p") and lines ("g"). The "auto.key" argument specifies that we want to generate a legend with three columns. The "xlab" and "ylab" arguments specify the labels for the x-axis and y-axis, respectively. The "main" argument specifies the title of the plot.
+
+Lattice Visualization
+
+This plot shows the relationship between sepal length and sepal width of the iris flowers, with each species represented by a different color.
+
+ggplot2 Visualization Finally, let's create a ggplot2 visualization of the "iris" dataset. We can use the "ggplot" function to create a scatter plot between the "Sepal.Length" and "Sepal.Width" variables, with the data points colored by species:
+
+```{r}
+library(ggplot2)
+ggplot(iris, aes(x = Sepal.Length, y = Sepal.Width, color = Species)) +
+  geom_point() +
+  labs(x = "Sepal Length", y = "Sepal Width",
+       title = "Scatter Plot of Sepal Length vs. Sepal Width by Species")
+```
+
+This generates a scatter plot between the "Sepal
